@@ -1,0 +1,68 @@
+<%= link_to '< back to developments', developments_path %>
+
+<h1>Dwellings in <%= @development.application_number %></h1>
+
+<p><%= @development.site_address %></p>
+
+<%= simple_format @development.proposal %>
+
+<a href="http://planbuild.southwark.gov.uk/documents/?casereference=<%= @development.application_number %>&system=DC">View planning application</a>
+
+<hr>
+
+<div class="row">
+  <% {
+    'Total homes' => @development.total_dwellings,
+    'Affordable homes' => @development.total_affordable_dwellings,
+    '% Affordable homes' => @development.percentage_affordable_dwellings,
+    'Total habitable rooms' => @development.total_habitable_rooms,
+    'Affordable habitable rooms' => @development.total_affordable_habitable_rooms,
+    '% Affordable habitable rooms' => @development.percentage_affordable_habitable_rooms,
+    'Total bedrooms' => @development.total_bedrooms,
+    'Affordable bedrooms' => @development.total_affordable_bedrooms,
+    '% Affordable bedrooms' => @development.percentage_affordable_bedrooms,
+  }.each_pair do |title, content| %>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= title %></h5>
+          <p class="card-text"><%= content %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>Tenure</th>
+    <th>Habitable Rooms</th>
+    <th>Bedrooms</th>
+    <th>Actions</th>
+  </tr>
+  <% @dwellings.each do |dwelling| %>
+    <tr>
+      <td><%= dwelling.tenure %></td>
+      <td><%= dwelling.habitable_rooms %></td>
+      <td><%= dwelling.bedrooms %></td>
+      <td><%= link_to 'edit', edit_development_dwelling_path(@development, dwelling) %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <th>Total</th>
+    <th><%= @development.total_habitable_rooms %></th>
+    <th><%= @development.total_bedrooms %></th>
+    <th></th>
+  </tr>
+</table>
+
+<h2>Add new dwelling</h2>
+
+<%= bootstrap_form_for([@development, @dwelling]) do |form| %>
+  <%= form.select :tenure, Dwelling::Tenures %>
+  <%= form.number_field :habitable_rooms %>
+  <%= form.number_field :bedrooms %>
+  <%= form.submit %>
+<% end %>

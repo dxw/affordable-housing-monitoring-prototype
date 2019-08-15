@@ -1,0 +1,20 @@
+<h1>Developments</h1>
+
+<p><%= link_to 'Add new development', new_development_path %></p>
+
+<table class="table">
+  <tr>
+    <th>Signed on</th>
+    <th>Application number</th>
+    <th>Site Address</th>
+    <th>Actions</th>
+  </tr>
+  <% @developments.each do |development| %>
+    <tr>
+      <td><%= development.signed_on %></td>
+      <td><%= link_to development.application_number, development_dwellings_path(development) %></td>
+      <td><%= development.site_address %></td>
+      <td><%= link_to 'edit', edit_development_path(development) %></td>
+    </tr>
+  <% end %>
+</table>
