@@ -1,5 +1,5 @@
 class Development < ApplicationRecord
-  has_many :dwellings
+  has_many :dwellings, dependent: :destroy
 
   def total_dwellings
     dwellings.count

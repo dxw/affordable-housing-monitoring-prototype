@@ -2,3 +2,5 @@
   <%= render partial: 'form', locals: { form: form } %>
   <%= form.submit %>
 <% end %>
+
+<%= button_to 'Delete Development', development_path(@development), method: :delete, data: {confirm: 'This will delete all dwellings for this development. Are you sure?'} %>

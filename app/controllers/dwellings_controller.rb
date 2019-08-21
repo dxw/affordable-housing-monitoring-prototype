@@ -29,6 +29,12 @@ class DwellingsController < ApplicationController
     end
   end
 
+  def destroy
+    @dwelling = @development.dwellings.find(params[:id])
+    @dwelling.destroy
+    redirect_to development_dwellings_path(@development)
+  end
+
   private
 
   def find_development

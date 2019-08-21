@@ -29,6 +29,12 @@ class DevelopmentsController < ApplicationController
     end
   end
 
+  def destroy
+    @development = Development.find(params[:id])
+    @development.destroy
+    redirect_to developments_path
+  end
+
   private
 
   def development_params
