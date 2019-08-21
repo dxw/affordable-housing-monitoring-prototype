@@ -22,7 +22,7 @@ class DwellingsController < ApplicationController
 
   def update
     @dwelling = @development.dwellings.find(params[:id])
-    if @dwelling.update(development_params)
+    if @dwelling.update(dwelling_params)
       redirect_to development_dwellings_path(@development)
     else
       render action: :edit

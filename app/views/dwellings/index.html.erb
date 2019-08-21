@@ -61,8 +61,6 @@
 <h2>Add new dwelling</h2>
 
 <%= bootstrap_form_for([@development, @dwelling]) do |form| %>
-  <%= form.select :tenure, Dwelling::Tenures %>
-  <%= form.number_field :habitable_rooms %>
-  <%= form.number_field :bedrooms %>
+  <%= render partial: 'form', locals: { form: form } %>
   <%= form.submit %>
 <% end %>

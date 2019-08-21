@@ -1,0 +1,4 @@
+<%= bootstrap_form_for([@development, @dwelling]) do |form| %>
+  <%= render partial: 'form', locals: { form: form } %>
+  <%= form.submit %>
+<% end %>
