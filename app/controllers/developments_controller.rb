@@ -35,9 +35,28 @@ class DevelopmentsController < ApplicationController
     redirect_to developments_path
   end
 
+  def completion_form
+    @development = Development.find(params[:id])
+  end
+
+  def completion
+    @development = Development.find(params[:id])
+    @development.update_attributes(
+      params.require(:development).permit(
+        dwellings_attributes: %i[id address uprn registered_provider]
+      )
+    )
+  end
+
   private
 
   def development_params
-    params.require(:development).permit(:application_number, :site_address, :signed_on, :proposal)
+    params.require(:development).permit(
+      :application_number,
+      :site_address,
+      :signed_on,
+      :proposal,
+      :status
+    )
   end
 end

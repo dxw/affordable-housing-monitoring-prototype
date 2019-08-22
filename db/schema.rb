@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_125317) do
+ActiveRecord::Schema.define(version: 2019_08_22_090645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_125317) do
     t.date "signed_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
   end
 
   create_table "dwellings", force: :cascade do |t|
@@ -34,6 +35,9 @@ ActiveRecord::Schema.define(version: 2019_08_14_125317) do
     t.string "rsl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "uprn"
+    t.string "registered_provider"
     t.index ["development_id"], name: "index_dwellings_on_development_id"
   end
 

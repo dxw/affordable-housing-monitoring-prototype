@@ -1,0 +1,25 @@
+<%= bootstrap_form_for(@development, url: completion_development_path(@development)) do |form| %>
+  <table class="table">
+    <tr>
+      <th>Tenure</th>
+      <th>Bedrooms</th>
+      <th>Habitable Rooms</th>
+      <th>Address</th>
+      <th>UPRN</th>
+      <th>Registered Provider</th>
+    </tr>
+    <%= form.fields_for :dwellings, @development.dwellings do |dwelling_form| %>
+      <% if dwelling_form.object.tenure != 'open' %>
+        <tr>
+          <td><%= dwelling_form.object.tenure %></td>
+          <td><%= dwelling_form.object.bedrooms %></td>
+          <td><%= dwelling_form.object.habitable_rooms %></td>
+          <td><%= dwelling_form.text_field :address, hide_label: true %></td>
+          <td><%= dwelling_form.text_field :uprn, hide_label: true %></td>
+          <td><%= dwelling_form.select :registered_provider, Dwelling::REGISTERED_PROVIDERS, hide_label: true %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+  <%= form.submit %>
+<% end %>

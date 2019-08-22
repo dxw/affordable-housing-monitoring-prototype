@@ -1,5 +1,10 @@
 class Development < ApplicationRecord
   has_many :dwellings, dependent: :destroy
+  STATUSES = %w[new agreed completed].freeze
+
+  accepts_nested_attributes_for :dwellings, update_only: true
+
+  default_scope { order(created_at: :asc) }
 
   def total_dwellings
     dwellings.count
