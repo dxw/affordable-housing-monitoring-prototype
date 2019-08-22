@@ -1,3 +1,8 @@
 <%= form.select :tenure, Dwelling::Tenures %>
 <%= form.number_field :habitable_rooms %>
 <%= form.number_field :bedrooms %>
+<% if form.object.development&.status == 'completed' && form.object.tenure != 'open' %>
+  <%= form.text_field :address, hide_label: true %>
+  <%= form.text_field :uprn, hide_label: true %>
+  <%= form.select :registered_provider, Dwelling::REGISTERED_PROVIDERS, hide_label: true %>
+<% end %>

@@ -40,6 +40,11 @@
     <th>Tenure</th>
     <th>Habitable Rooms</th>
     <th>Bedrooms</th>
+    <% if @development.status == 'completed' %>
+      <th>Address</th>
+      <th>UPRN</th>
+      <th>Registered Provider</th>
+    <% end %>
     <th>Actions</th>
   </tr>
   <% @dwellings.each do |dwelling| %>
@@ -47,6 +52,11 @@
       <td><%= dwelling.tenure %></td>
       <td><%= dwelling.habitable_rooms %></td>
       <td><%= dwelling.bedrooms %></td>
+      <% if @development.status == 'completed' %>
+        <td><%= dwelling.address %></td>
+        <td><%= dwelling.uprn %></td>
+        <td><%= dwelling.registered_provider %></td>
+      <% end %>
       <td><%= link_to 'edit', edit_development_dwelling_path(@development, dwelling) %></td>
     </tr>
   <% end %>
