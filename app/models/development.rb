@@ -42,6 +42,10 @@ class Development < ApplicationRecord
     calculate_percentage(total_affordable_bedrooms, total_bedrooms)
   end
 
+  def developer_needs_to_respond?
+    status == 'completed' && dwellings.where("(coalesce(address, '') = '' OR coalesce(uprn, '') = '' OR coalesce(registered_provider, '') = '') AND tenure != 'open'").any?
+  end
+
   private
 
   def calculate_percentage(stat1, stat2)
