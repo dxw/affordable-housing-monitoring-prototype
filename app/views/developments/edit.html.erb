@@ -1,3 +1,5 @@
+<%= render partial: '/partial/header_internal' %>
+
 <%= bootstrap_form_for(@development) do |form| %>
   <%= render partial: 'form', locals: { form: form } %>
   <%= form.submit %>

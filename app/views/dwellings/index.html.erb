@@ -1,6 +1,7 @@
-<%= link_to '< back to developments', developments_path %>
+<%= render partial: '/partial/header_developer' %>
+<h1 class="mb-5">Dwellings in <%= @development.application_number %></h1>
 
-<h1>Dwellings in <%= @development.application_number %></h1>
+<%= link_to '< back to developments', developments_path %>
 
 <p><%= @development.site_address %></p>
 
