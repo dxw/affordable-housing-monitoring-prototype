@@ -1,5 +1,6 @@
 class Development < ApplicationRecord
   has_many :dwellings, dependent: :destroy
+  has_many :audit_logs
   STATUSES = %w[new agreed completed].freeze
 
   accepts_nested_attributes_for :dwellings, update_only: true

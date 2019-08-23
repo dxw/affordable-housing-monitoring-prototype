@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_090645) do
+ActiveRecord::Schema.define(version: 2019_08_23_113051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "audit_logs", force: :cascade do |t|
+    t.bigint "development_id"
+    t.bigint "dwelling_id"
+    t.string "created_by"
+    t.string "what_changed"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["development_id"], name: "index_audit_logs_on_development_id"
+    t.index ["dwelling_id"], name: "index_audit_logs_on_dwelling_id"
+  end
 
   create_table "developments", force: :cascade do |t|
     t.string "application_number"

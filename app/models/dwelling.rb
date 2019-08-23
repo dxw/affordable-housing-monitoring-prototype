@@ -1,5 +1,6 @@
 class Dwelling < ApplicationRecord
   belongs_to :development
+  has_many :audit_logs
 
   default_scope { order(created_at: :asc) }
 

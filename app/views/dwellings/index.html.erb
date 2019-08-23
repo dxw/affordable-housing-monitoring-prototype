@@ -80,3 +80,24 @@
 <% end %>
 
 <div class="mb-5"></div>
+
+<% if @development.audit_logs.any? %>
+  <h2>Change Log</h2>
+
+  <table class="table">
+    <tr>
+      <th>Timestamp</th>
+      <th>Changed by</th>
+      <th>What changed</th>
+      <th>Reason</th>
+    </tr>
+    <% @development.audit_logs.each do |audit_log| %>
+      <tr>
+        <td><%= audit_log.created_at.to_s(:short) %></td>
+        <td><%= audit_log.created_by %></td>
+        <td><%= audit_log.what_changed %></td>
+        <td><%= audit_log.comment %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
