@@ -6,7 +6,6 @@
 <table class="table">
   <tr>
     <th>Status</th>
-    <th>Signed on</th>
     <th>Application number</th>
     <th>Site Address</th>
     <th>Actions</th>
@@ -14,7 +13,6 @@
   <% @developments.each do |development| %>
     <tr>
       <td><%= development.status %></td>
-      <td><%= development.signed_on %></td>
       <td><%= link_to development.application_number, development_dwellings_path(development) %></td>
       <td><%= development.site_address %></td>
       <td>

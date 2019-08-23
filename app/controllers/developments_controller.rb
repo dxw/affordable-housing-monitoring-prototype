@@ -54,7 +54,6 @@ class DevelopmentsController < ApplicationController
     params.require(:development).permit(
       :application_number,
       :site_address,
-      :signed_on,
       :proposal,
       :status
     )
