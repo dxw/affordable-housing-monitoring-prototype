@@ -1,5 +1,13 @@
 <%= render partial: '/partial/header_developer' %>
 
+<h2>Developer completion form</h2>
+
+<p>Congratulations on completing the build of <%= @development.site_address %>!</p>
+
+<p>When Southwark gave you planning permission to build, you agreed to build the following Affordable Housing.</p>
+
+<p>Please provide the requested details for this housing now it is completed.</p>
+
 <%= bootstrap_form_for(@development, url: completion_development_path(@development)) do |form| %>
   <table class="table">
     <tr>

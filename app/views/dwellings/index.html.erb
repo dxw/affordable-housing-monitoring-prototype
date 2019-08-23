@@ -3,6 +3,15 @@
 
 <h1 class="mb-5 mt-3">Dwellings in <%= @development.application_number %></h1>
 
+<p>Status: <%= @development.status %></p>
+
+<% if @development.developer_needs_to_respond? %>
+  <p>
+    Please ask developer to fill in the completion form by sending them the URL below.
+    <%= text_field_tag 'completion-form', completion_form_development_url(@development), class: 'form-control' %>
+  </p>
+<% end %>
+
 <p><%= @development.site_address %></p>
 
 <%= simple_format @development.proposal %>
@@ -66,9 +75,11 @@
     <th><%= @development.total_habitable_rooms %></th>
     <th><%= @development.total_bedrooms %></th>
     <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <% if @development.status == 'completed' %>
+      <th></th>
+      <th></th>
+      <th></th>
+    <% end %>
   </tr>
 </table>
 

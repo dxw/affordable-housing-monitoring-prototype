@@ -1,7 +1,7 @@
 <%= form.select :tenure, Dwelling::Tenures %>
 <%= form.number_field :habitable_rooms %>
 <%= form.number_field :bedrooms %>
-<% if form.object.development&.status != 'new' %>
+<% if @development.status != 'new' %>
   <div class="form-group">
     <label for="comment">Change comment</label>
     <%= text_field_tag :comment, nil, class: 'form-control' %>

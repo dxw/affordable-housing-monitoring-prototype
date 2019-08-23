@@ -17,12 +17,6 @@
       <td><%= development.site_address %></td>
       <td>
         <%= link_to 'edit', edit_development_path(development) %>
-        <% if development.developer_needs_to_respond? %>
-          <p>
-            Please ask developer to fill in this
-            <%= link_to 'completion form', completion_form_development_path(development) %>
-          </p>
-        <% end %>
       </td>
     </tr>
   <% end %>
