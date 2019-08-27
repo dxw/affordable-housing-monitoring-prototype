@@ -1,9 +1,10 @@
 <%= render partial: '/partial/header_developer' %>
+<div class="container">
 <%= link_to '< back to developments', developments_path %>
 
 <h1 class="mb-5 mt-3">Dwellings in <%= @development.application_number %></h1>
 
-<p>Status: <%= @development.status %></p>
+<h4 class="mb-3"><span class="badge badge-primary">Status: <%= @development.status %></span></h4>
 
 <% if @development.developer_needs_to_respond? %>
   <p>
@@ -95,7 +96,7 @@
 <% if @development.audit_logs.any? %>
   <h2>Change Log</h2>
 
-  <table class="table">
+  <table class="table mb-5">
     <tr>
       <th>Timestamp</th>
       <th>Changed by</th>
@@ -112,3 +113,4 @@
     <% end %>
   </table>
 <% end %>
+</div>
