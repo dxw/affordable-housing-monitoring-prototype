@@ -10,7 +10,7 @@ class DevelopmentsController < ApplicationController
   def create
     @development = Development.new(development_params)
     if @development.save
-      redirect_to developments_path
+      redirect_to development_dwellings_path(@development)
     else
       render action: :new
     end
@@ -23,7 +23,7 @@ class DevelopmentsController < ApplicationController
   def update
     @development = Development.find(params[:id])
     if @development.update(development_params)
-      redirect_to developments_path
+      redirect_to development_dwellings_path(@development)
     else
       render action: :edit
     end
